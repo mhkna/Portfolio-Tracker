@@ -7,43 +7,45 @@ describe PortfoliosController do
   describe "GET #index" do
     it "responds with a status code of 200" do
       get :index
-      expect(response).to have_http_status 450 #200
+      expect(response).to have_http_status 200
     end
 
-    it "assigns all portfolios to @portfolios" do
+    xit "assigns all portfolios to @portfolios" do
       get :index
-      expect(assigns(@portfolios).count).to eq Portfolio.all.count #should be ==
+      expect(assigns(@portfolios).count).to eq Portfolio.all.count # hmmmmmmm, what is this?
     end
 
     it "renders the :index template" do
       get :index
-      expect(response).to render_template(:coolness) #:index
+      expect(response).to render_template(:index)
     end
   end
 
   describe "GET #new" do
     it "responds with status code 200" do
       get :new
-      expect(response).to have_http_status 418 #200
+      expect(response).to have_http_status 200
     end
 
     it "assigns a new portfolio to @portfolio" do
       get :new
-      expect(assigns(:portfolio)).to be_a_new Integer #Portfolio
+      expect(assigns(:portfolio)).to be_a_new Portfolio
     end
 
     it "renders the :new template" do
       get :new
-      expect(response).to render_template(:coolness) #new?
+      expect(response).to render_template(:new)
     end
   end
 
   describe "POST #create" do
-    context "when valid params are passed" do
-      xit "responds with status code 302" do
+    context "when valid params are passed" do #having trouble seeing what are valid params
+      it "responds with status code 302" do
+        post :create, params: {portfolio: {portfolio_name: "awesome", user_id: user.id}}
+        expect(response).to have_http_status 302
         end
       it "creates a new portfolio in the database" do
-        expect { post :create, params: {portfolio: {portfolio_name: "awesome", user_id: 10}}}.to change(Portfolio, :count).by 1 #this is failing b/c not successfully creating thing
+        expect { post :create, params: {portfolio: {portfolio_name: "awesome", user_id: user.id}}}.to change(Portfolio, :count).by 1 #this is failing b/c not successfully creating thing
       end
 
       # xit "sets a notice that the portfolio was successfully created" do
@@ -52,26 +54,26 @@ describe PortfoliosController do
       # end
 
       it "redirects to the created portfolio" do
-        post :create, params: {portfolio: {portfolio_name: "awesome", user_id: 10}}
+        post :create, params: {portfolio: {portfolio_name: "awesome", user_id: user.id}}
         #expect(response).to redirect_to portfolio_url(assigns(:portfolio).id)
       end
     end
 
     context "when invalid params are passed" do
       it "responds with status code 422: Unprocessable Entity" do
-        post :create, params: {portfolio: {portfolio_name: "awesome", user_id: 10}}
-        expect(response).to have_http_status 418 #422
+        post :create, params: {portfolio: {portfolio_name: "go pound sand"}}
+        expect(response).to have_http_status 422
       end
 
       it "does not create a new portfolio in the database" do
         before_count = Portfolio.count
-        post :create, params: {portfolio: {portfolio_name: "awesome", user_id: 10}}
-        expect(Portfolio.count).to eq before_count + 1 #remove the plus one
+        post :create, params: {portfolio: {portfolio_name: "go pound sand"}}
+        expect(Portfolio.count).to eq before_count
       end
 
       it "renders the :new template" do
         post :create, params: {portfolio: {portfolio_name: "awesome", user_id: 10}}
-        expect(response).to render_template(:cool) #;new
+        expect(response).to render_template(:new)
       end
     end
   end

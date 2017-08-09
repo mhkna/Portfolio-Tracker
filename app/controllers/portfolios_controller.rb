@@ -6,7 +6,9 @@ class PortfoliosController < ApplicationController
   def create
     @portfolio = Portfolio.new(portfolio_params)
     if @portfolio.save
+      redirect_to @portfolio #do we want a notice?
     else
+      render :new, status: 422
     end
   end
 
