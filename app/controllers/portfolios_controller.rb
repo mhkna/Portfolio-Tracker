@@ -5,6 +5,9 @@ class PortfoliosController < ApplicationController
 
   def create
     @portfolio = Portfolio.new(portfolio_params)
+    if @portfolio.save
+    else
+    end
   end
 
   def show
