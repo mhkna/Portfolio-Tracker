@@ -1,4 +1,7 @@
 class PortfoliosController < ApplicationController
+  def index
+  end
+  
   def new
   end
 
@@ -8,8 +11,6 @@ class PortfoliosController < ApplicationController
   def show
   end
 
-  def index
-  end
 
   def destroy
   end

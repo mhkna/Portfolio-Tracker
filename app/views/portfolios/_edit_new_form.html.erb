@@ -1,0 +1,5 @@
+<%= form_with model: @portfolio, url: new_portfolio_path do |f|%>
+	<%= f.label :portfolio_name, "Portfolio Name:" %><br>
+  <%= f.text_field :portfolio_name %>
+  <%= f.submit "Submit" %>
+<% end %>
