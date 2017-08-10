@@ -13,7 +13,12 @@ class Stock < ApplicationRecord
 		end
 	end
 
-	def check_duplicate
+	def duplicate?
+		if Stock.find_by(symbol: self.symbol) || Stock.find_by(name: self.name)
+			return true
+		else
+			return false
+		end
 	end
 
 	private
