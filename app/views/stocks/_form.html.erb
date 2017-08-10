@@ -1,0 +1,7 @@
+<%= form_with model: @stock, id: :stock_form do |f| %>
+	<%= f.label :name, id: :label_stock_name %>
+	<%= f.text_field :name, id: :stock_name %>
+	<%= f.label :symbol, id: :label_stock_symbol %>
+	<%= f.text_field :symbol, id: :stock_symbol %>
+	<%= f.submit 'Save', id: :stock_submit %>
+<% end %>

@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   	root :to => 'devise/sessions#new'
 	end
 
-	resources :stocks, except: [:show, :index]
+	resources :stocks, except: [:show, :index, :destroy]
+
 end
