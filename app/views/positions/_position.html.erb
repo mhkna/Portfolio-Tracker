@@ -6,12 +6,12 @@
     <%= position.stock.symbol %>
   </div>
   <div class="p-stock-purchase">
-    <%= position.purchase_price %>
+    <%= number_to_currency(position.purchase_price) %>
   </div>
   <div class="p-stock-current">
-    <%= position.stock.current_price %>
+    <%= number_to_currency(position.stock.current_price.to_f) %>
   </div>
   <div class="p-stock-profit-loss">
-    <%= position.profit_loss %>
+    <%= number_to_currency(position.profit_loss.to_f) %>
   </div>
 </div>
