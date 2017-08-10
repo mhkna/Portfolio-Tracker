@@ -1,6 +1,6 @@
 <h1>Create New Position</h1>
 
-<%= form_for @position, url: { action: 'create' } do |f| %>
+<%= form_with model: @position, url: portfolio_positions_path do |f| %>
 
   <% if @position.errors.any? %>
     You have <%= pluralize(@position.errors.count, 'error') %>
@@ -17,8 +17,18 @@
     <%= f.label :purchase_price %><br>
     <%= f.text_field :purchase_price %>
   </p>
+    <%= f.fields_for :stock do |sf| %>
+    <p>
+      <%= f.label :stock_name %><br>
+      <%= f.text_field :name %>
+    </p>
+    <p>
+      <%= f.label :stock_symbol %><br>
+      <%= f.text_field :symbol %>
+    </p>
+    <% end %>
   <p>
-    <%= f.submit "Add position" %>
+    <%= f.submit "Add Position" %>
   </p>
 
 <% end %>
