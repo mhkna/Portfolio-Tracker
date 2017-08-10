@@ -25,9 +25,6 @@ class StocksController < ApplicationController
 	def update
 	end
 
-	def destroy
-	end
-
 	private
 		def stock_params
 			params.require(:stock).permit(:name, :symbol)
