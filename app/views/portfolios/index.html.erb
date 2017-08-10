@@ -5,7 +5,7 @@
 <% if @portfolios %>
 	<% @portfolios.each do |portfolio| %>
 	<ul>
-		<li><%= portfolio.portfolio_name %>
+		<li><%= link_to(portfolio.portfolio_name, portfolio_path(portfolio)) %>
       <button class="delete-portfolio" id=<%= portfolio.id%>> Delete Portfolio</button>
 		</li>
 	</ul>

@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20170810120910) do
     t.decimal "purchase_price", precision: 16, scale: 4, null: false
     t.decimal "sale_price", precision: 16, scale: 4
     t.integer "portfolio_id", null: false
-    t.integer "stock_id", null: false
+    t.integer "stock_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
