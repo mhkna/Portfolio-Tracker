@@ -5,10 +5,16 @@ class PositionsController < ApplicationController
   end
 
   def create
-    p params
+    @stock = Stock.new(name: params[:position][:name], symbol: params[:position][:symbol].upcase)
     @position = Position.new(position_params)
+    if !@stock.is_stock_already_persisted
+      @stock.save
+      @position.stock_id = @stock.id
+    else
+      @wanted_stock = @stock.is_stock_already_persisted
+      @position.stock_id = @wanted_stock.id
+    end
     @position.portfolio_id = params[:portfolio_id]
-    # @position.stock = Stock.find_or_initialize_by(symbol: params[:symbol])
     if @position.save
       redirect_to @position.portfolio
     else
@@ -18,10 +24,12 @@ class PositionsController < ApplicationController
 
   def edit
     @position = Position.find(params[:id])
+    @stock = Stock.find(@position.stock_id)
   end
 
   def update
     @position = Position.new(params[:id])
+
     if @position.update(position_params)
       redirect_to @position.portfolio
     else
