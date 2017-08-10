@@ -10,9 +10,9 @@ describe Stock do
 				expect(stock.current_price).to be_a(String)
 			end
 
-			pending 'raises an error when symbol is invalid' do
+			it 'raises an error when symbol is invalid' do
 				stock.symbol = "1"
-				expect(stock.current_price).to raise_exception
+				expect {stock.current_price}.to raise_error(ArgumentError, "Stock symbol is not valid")
 			end
 		end
 	end
