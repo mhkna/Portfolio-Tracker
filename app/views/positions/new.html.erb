@@ -1,0 +1,24 @@
+<h1>Create New Position</h1>
+
+<%= form_for @position, url: { action: 'create' } do |f| %>
+
+  <% if @position.errors.any? %>
+    You have <%= pluralize(@position.errors.count, 'error') %>
+    <%= @position.errors.full_messages.each do |message|%>
+      <%= message %>
+    <% end %>
+  <% end %>
+
+  <p>
+    <%= f.label :owned_shares %><br>
+    <%= f.text_field :owned_shares %>
+  </p>
+  <p>
+    <%= f.label :purchase_price %><br>
+    <%= f.text_field :purchase_price %>
+  </p>
+  <p>
+    <%= f.submit "Add position" %>
+  </p>
+
+<% end %>
