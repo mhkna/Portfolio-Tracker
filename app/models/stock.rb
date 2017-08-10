@@ -6,7 +6,7 @@ class Stock < ApplicationRecord
 
 	def current_price
 		response = current_price_request
-		raise ArgumentError, "Stock symbol is not valid" if response.first[0].include?("Error")
+		raise ArgumentError, "Stock symbol is not valid" if response.first.any? { |data| data.include?("Invalid API call") }
 		response["Time Series (1min)"].first[1]["4. close"]
 	end
 
