@@ -6,8 +6,19 @@ class Stock < ApplicationRecord
 
 	def current_price
 		response = current_price_request
-		raise ArgumentError, "Stock symbol is not valid" if response.first.any? { |data| data.include?("Invalid API call") }
-		response["Time Series (1min)"].first[1]["4. close"]
+		if response.has_key?("Error Message")
+			raise ArgumentError, "Stock symbol is not valid"
+		else
+			response["Time Series (1min)"].first[1]["4. close"]
+		end
+	end
+
+	def duplicate?
+		if Stock.find_by(symbol: self.symbol) || Stock.find_by(name: self.name)
+			return true
+		else
+			return false
+		end
 	end
 
 	private
