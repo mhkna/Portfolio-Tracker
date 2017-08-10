@@ -13,9 +13,11 @@ class Stock < ApplicationRecord
 		end
 	end
 
-	def duplicate?
-		if Stock.find_by(symbol: self.symbol) || Stock.find_by(name: self.name)
-			return true
+	def is_stock_already_persisted
+		if Stock.find_by(symbol: self.symbol).instance_of? Stock
+			return Stock.find_by(symbol: self.symbol)
+		elsif Stock.find_by(symbol: self.name).instance_of? Stock
+			return Stock.find_by(symbol: self.name)
 		else
 			return false
 		end
