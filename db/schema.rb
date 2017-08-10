@@ -15,11 +15,13 @@ ActiveRecord::Schema.define(version: 20170810120910) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-
   create_table "portfolios", force: :cascade do |t|
     t.string "portfolio_name"
     t.integer "user_id"
-    
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "positions", force: :cascade do |t|
     t.integer "owned_shares", null: false
     t.decimal "purchase_price", precision: 16, scale: 4, null: false
