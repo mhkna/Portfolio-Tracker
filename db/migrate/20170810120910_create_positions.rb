@@ -5,7 +5,7 @@ class CreatePositions < ActiveRecord::Migration[5.1]
     	t.decimal :purchase_price, null: false, precision: 16, scale: 4
     	t.decimal :sale_price, precision: 16, scale: 4
     	t.integer :portfolio_id, null: false
-    	t.integer :stock_id, null: false
+    	t.integer :stock_id#, null: false
 
     	t.timestamps
     end
