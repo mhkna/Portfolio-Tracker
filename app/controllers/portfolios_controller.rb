@@ -26,7 +26,6 @@ class PortfoliosController < ApplicationController
   def show
     @portfolio = Portfolio.find(params[:id])
     @positions = @portfolio.positions
-    p @positions
   end
 
   def index
