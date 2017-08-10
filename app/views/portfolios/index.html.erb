@@ -1,1 +1,14 @@
-something heref for test purposes
+<h1>Portfolio Index</h1>
+
+<%= link_to("New Portfolio", new_portfolio_path) %><br>
+
+<% if @portfolios %>
+	<% @portfolios.each do |portfolio| %>
+	<ul>
+		<li><%= portfolio.portfolio_name %>
+			<%= link_to("Edit Portfolio Name", edit_portfolio_path) %>
+			<%= link_to("Delete Portfolio", destroy_portfolio_path) %>
+		</li>
+	</ul>
+	<% end %>
+<% end %>
