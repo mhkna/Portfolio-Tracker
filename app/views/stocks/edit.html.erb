@@ -1,6 +1,6 @@
 <h2 id="edit-stock-heading">Edit Stock</h2>
 
 <%= form_with model: @stock do |f| %>
-	<%=  %>
-<%  %>
-
+	<%= f.text_field :name, id: :stock_name %>
+	<%= f.text_field :symbol, id: :stock_symbol %>
+<% end %>
