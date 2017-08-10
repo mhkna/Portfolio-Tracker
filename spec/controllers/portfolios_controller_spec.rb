@@ -77,4 +77,29 @@ describe PortfoliosController do
       end
     end
   end
+
+  describe "GET #show" do
+    it "responds with status code 200" do
+      get :show, params: { id: portfolio.id }
+      expect(response).to have_http_status 200
+    end
+
+    # it "assigns a new portfolio to @portfolio" do
+    #   get :new
+    #   expect(assigns(:portfolio)).to be_a_new Portfolio
+    # end
+
+    # it "renders the :new template" do
+    #   get :new
+    #   expect(response).to render_template(:new)
+    # end
+  end
+
+  describe "POST #destroy" do
+    it "blah" do
+      original_count = Portfolio.all.count
+      post :destroy, params: { id: portfolio.id}
+      expect(Portfolio.all.count).to eq original_count - 1
+    end
+  end
 end

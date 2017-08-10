@@ -23,7 +23,7 @@ class PortfoliosController < ApplicationController
   def destroy
     portfolio = Portfolio.find(params[:id])
     portfolio.destroy
-    redirect_to portfolios_path_url
+    redirect_to portfolios_path
   end
 
   private
