@@ -1,7 +1,7 @@
 class PortfoliosController < ApplicationController
   def index
   end
-  
+
   def new
     @portfolio = Portfolio.new
   end
@@ -13,6 +13,12 @@ class PortfoliosController < ApplicationController
     else
       render :new, status: 422
     end
+  end
+
+  def edit
+  end
+
+  def update
   end
 
   def show
