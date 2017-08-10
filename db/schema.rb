@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20170810120910) do
   create_table "positions", force: :cascade do |t|
     t.integer "owned_shares", null: false
     t.decimal "purchase_price", precision: 16, scale: 4, null: false
-    t.decimal "sale_price", precision: 16, scale: 4, null: false
+    t.decimal "sale_price", precision: 16, scale: 4
     t.integer "portfolio_id", null: false
     t.integer "stock_id", null: false
     t.datetime "created_at", null: false

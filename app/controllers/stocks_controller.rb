@@ -6,7 +6,7 @@ class StocksController < ApplicationController
 	def create
 		@stock = Stock.new(stock_params)
 		@stock.symbol.upcase!
-		if @stock.duplicate?
+		if @stock.is_stock_already_persisted
 			status 406
 			render 'new'
 		else
