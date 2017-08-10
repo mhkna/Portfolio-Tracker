@@ -16,8 +16,8 @@ class Stock < ApplicationRecord
 	def is_stock_already_persisted
 		if Stock.find_by(symbol: self.symbol).instance_of? Stock
 			return Stock.find_by(symbol: self.symbol)
-		elsif Stock.find_by(symbol: self.name).instance_of? Stock
-			return Stock.find_by(symbol: self.name)
+		elsif Stock.find_by(name: self.name).instance_of? Stock
+			return Stock.find_by(name: self.name)
 		else
 			return false
 		end
