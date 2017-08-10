@@ -4,6 +4,8 @@ class StocksController < ApplicationController
 	end
 
 	def create
+		@stock = Stock.new(stock_params)
+		if @stock.
 	end
 
 	def edit

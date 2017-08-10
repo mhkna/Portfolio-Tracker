@@ -2,5 +2,8 @@
 
 <p id="find-stock-p">Enter the stock's company name or symbol.</p>
 <%= form_with url: edit_stock_path do |f| %>
-	<%= f.text_field :search, id: :find_stock_search_text %>
+	<%= f.text_field :name, id: :search_stock_name %>
+	<p>or</p>
+	<%= f.text_field :symbol, id: :search_stock_symbol %>
+	<%= f.submit, id: :search_stock_submit %>
 <% end %>
