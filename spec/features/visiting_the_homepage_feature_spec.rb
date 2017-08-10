@@ -66,5 +66,5 @@ end
 # 		page.find_by_id("navbar")
 
 # 		expect(page).to have_current_path "/"
-# 	end
+# 	end##
 # end
