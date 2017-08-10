@@ -11,9 +11,9 @@ class Stock < ApplicationRecord
 	end
 
 	private
-	def current_price_request
-		uri = URI.parse("https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=#{self.symbol}&interval=1min&apikey=#{ENV["ALPHA_VANTAGE_KEY"]}")
-		request = Net::HTTP.get(uri)
-		JSON.parse(request)
-	end
+		def current_price_request
+			uri = URI.parse("https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=#{self.symbol}&interval=1min&apikey=#{ENV["ALPHA_VANTAGE_KEY"]}")
+			request = Net::HTTP.get(uri)
+			JSON.parse(request)
+		end
 end
