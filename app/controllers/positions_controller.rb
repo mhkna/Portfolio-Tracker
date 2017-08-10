@@ -5,7 +5,8 @@ class PositionsController < ApplicationController
   end
 
   def create
-    p params
+    #sotck find or create
+    User.
     @position = Position.new(position_params)
     @position.portfolio_id = params[:portfolio_id]
     # @position.stock = Stock.find_or_initialize_by(symbol: params[:symbol])
