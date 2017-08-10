@@ -4,15 +4,27 @@ class StocksController < ApplicationController
 	end
 
 	def create
+		@stock = Stock.new(stock_params)
+		@stock.symbol.upcase!
+		if @stock.duplicate?
+			status 406
+			render 'new'
+		else
+			if @stock.save
+				flash[:notice] = "Stock added successfully"
+				redirect_to root_path
+			else
+				@errors = @stock.errors.full_messages
+				render 'new'
+			end
+		end
 	end
 
 	def edit
+		@stock = Stock.find_by(symbol: params[:id])
 	end
 
 	def update
-	end
-
-	def destroy
 	end
 
 	private

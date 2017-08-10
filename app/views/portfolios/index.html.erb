@@ -6,7 +6,7 @@
 	<% @portfolios.each do |portfolio| %>
 	<ul>
 		<li><%= portfolio.portfolio_name %>
-
+      <button class="delete-portfolio" id=<%= portfolio.id%>> Delete Portfolio</button>
 		</li>
 	</ul>
 	<% end %>
