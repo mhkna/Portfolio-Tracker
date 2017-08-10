@@ -7,7 +7,9 @@ class PortfoliosController < ApplicationController
   end
 
   def create
+    bounce_non_user
     @portfolio = Portfolio.new(portfolio_params)
+    current_user.portfolios << @portfolio
     if @portfolio.save
       redirect_to @portfolio #do we want a notice?
     else
@@ -38,6 +40,6 @@ class PortfoliosController < ApplicationController
   private
 
   def portfolio_params
-    params.require(:portfolio).permit(:name, :user_id)
+    params.require(:portfolio).permit(:portfolio_name)
   end
 end

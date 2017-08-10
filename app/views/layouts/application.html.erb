@@ -2,11 +2,13 @@
 <html>
   <head>
     <title>PortfolioTracker</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <%= javascript_include_tag "markscript" %>
     <%= csrf_meta_tags %>
-    <%= render "navbar" %>
   </head>
 
   <body>
+    <%= render "navbar" %>
   	<p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 

@@ -2,12 +2,17 @@ require 'rails_helper'
 
 describe PortfoliosController do
   let!(:user) {User.create!(email: "mark1@mark22.com", password: "1234567812345678123456781234567812345678123456781234567812345678") }
+  let!(:user1) {User.create!(email: "mark1@mark212.com", password: "1234567812345678123456781234567812345678123456781234567812345678") }
   let!(:portfolio) {user.portfolios.create!(portfolio_name: 'My Portfolio')}
 
   describe "GET #index" do
     it "responds with a status code of 200" do
+      sign_in user
       get :index
       expect(response).to have_http_status 200
+    end
+
+    it "redirects to login if no user logged in" do
     end
 
     xit "assigns all portfolios to @portfolios" do
@@ -41,11 +46,13 @@ describe PortfoliosController do
   describe "POST #create" do
     context "when valid params are passed" do #having trouble seeing what are valid params
       it "responds with status code 302" do
-        post :create, params: {portfolio: {portfolio_name: "awesome", user_id: user.id}}
+        sign_in user
+        post :create, params: {portfolio: {portfolio_name: "awesome"}}
         expect(response).to have_http_status 302
         end
       it "creates a new portfolio in the database" do
-        expect { post :create, params: {portfolio: {portfolio_name: "awesome", user_id: user.id}}}.to change(Portfolio, :count).by 1 #this is failing b/c not successfully creating thing
+        sign_in user
+        expect { post :create, params: {portfolio: {portfolio_name: "awesome"}}}.to change(Portfolio, :count).by 1 #this is failing b/c not successfully creating thing
       end
 
       # xit "sets a notice that the portfolio was successfully created" do
@@ -54,6 +61,7 @@ describe PortfoliosController do
       # end
 
       it "redirects to the created portfolio" do
+        sign_in user
         post :create, params: {portfolio: {portfolio_name: "awesome", user_id: user.id}}
         #expect(response).to redirect_to portfolio_url(assigns(:portfolio).id)
       end
@@ -61,18 +69,21 @@ describe PortfoliosController do
 
     context "when invalid params are passed" do
       it "responds with status code 422: Unprocessable Entity" do
-        post :create, params: {portfolio: {portfolio_name: "go pound sand"}}
+        sign_in user
+        post :create, params: {portfolio: {drake: "is awesome"}}
         expect(response).to have_http_status 422
       end
 
       it "does not create a new portfolio in the database" do
+        sign_in user
         before_count = Portfolio.count
-        post :create, params: {portfolio: {portfolio_name: "go pound sand"}}
+        post :create, params: {portfolio: {drake: "is awesome"}}
         expect(Portfolio.count).to eq before_count
       end
 
       it "renders the :new template" do
-        post :create, params: {portfolio: {portfolio_name: "awesome", user_id: 10}}
+        sign_in user
+        post :create, params: {portfolio: {drake: "is awesome"}}
         expect(response).to render_template(:new)
       end
     end
