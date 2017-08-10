@@ -24,6 +24,7 @@ class PositionsController < ApplicationController
 
   def edit
     @position = Position.find(params[:id])
+    @stock = Stock.find(@position.stock_id)
   end
 
   def update
