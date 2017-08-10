@@ -1,4 +1,6 @@
 class Portfolio < ApplicationRecord
+  validates :portfolio_name, presence: true
+
   belongs_to :user
   has_many :positions
   has_many :stocks, through: :positions
