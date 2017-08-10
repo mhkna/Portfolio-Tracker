@@ -5,6 +5,7 @@ class StocksController < ApplicationController
 
 	def create
 		@stock = Stock.new(stock_params)
+		@stock.symbol.upcase!
 		if @stock.duplicate?
 			status 406
 			render 'new'
@@ -20,6 +21,7 @@ class StocksController < ApplicationController
 	end
 
 	def edit
+		@stock = Stock.find_by(symbol: params[:id])
 	end
 
 	def update
