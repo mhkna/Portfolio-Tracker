@@ -5,6 +5,6 @@ class Position < ApplicationRecord
   validates_presence_of :owned_shares, :purchase_price, :portfolio_id, :stock_id
 
   def profit_loss
-    self.stock.current_price - self.purchase_price
+    self.stock.current_price.to_d - self.purchase_price.to_d
   end
 end
