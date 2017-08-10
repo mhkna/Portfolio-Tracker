@@ -62,7 +62,9 @@ feature "When a user logs out" do
 
 	scenario "clicking the 'log out' link logs the user out" do
 
+		visit portfolios_path
+		find_by_id("navbar")
 
+		expect(page).to have_current_path "/"
 	end
-
 end
