@@ -5,7 +5,11 @@
 
 <h1 class=<%= @portfolio.css_green_or_red %>>
   <%= number_to_currency(@portfolio.total_pnl) %>
-  (<%= number_to_percentage(@portfolio.percent_change, precision: 2) %>)
+  <% if @portfolio.total_pnl == 0 %>
+    (0.00%)
+  <% else %>
+    (<%= number_to_percentage(@portfolio.percent_change, precision: 2) %>)
+  <% end %>
 </h1>
 
 

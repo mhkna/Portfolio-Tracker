@@ -139,11 +139,21 @@ a {
 /*	font-size: 10px;*/
 	vertical-align: center;
 }
-.edit-links {
 
+.edit-links {
 }
 
 .delete-button {
+}
 
+
+#total-total {
+	padding-top: 10px;
+	position: relative;
+	margin: auto;
+	width: 900px;
+	border-radius: 15px;
+	box-sizing: border-box;
 
 }
+
