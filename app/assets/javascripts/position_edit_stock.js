@@ -14,6 +14,12 @@ $(document).ready(function() {
 		})
 	});
 
-	
+	$('.portfolio-show-right').on('submit', '#stock_submit', function(event) {
+		event.preventDefault();
+		var $stockSubmitButton = $(event.target);
+		$.ajax({
+			type
+		})
+	});
 })
 
