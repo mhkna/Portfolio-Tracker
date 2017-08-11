@@ -14,10 +14,14 @@
   <div class="p-stock-profit-loss">
     <%= number_to_currency(position.profit_loss.to_f) %> (<%= number_to_percentage(position.percent_change, precision: 2) %>)
   </div>
-  <div class="edit-delete-links">
-    <%= link_to("Edit Stock", edit_stock_path(position.stock)) %> |
-    <%= link_to("Edit Position", edit_portfolio_position_path(position)) %> |
-    <%= link_to "Delete", portfolio_position_path(position), data: { confirm: 'Are you sure?' }, method: :delete %>
+  <div class="edit-delete-links-container">
+    <div class="edit-links">
+      <%= link_to("Edit Stock", edit_stock_path(position.stock)) %> |
+      <%= link_to("Edit Position", edit_portfolio_position_path(@portfolio, position)) %> |
+    </div>
+    <div class="delete-button">
+      <%= button_to "Delete", portfolio_position_path(@portfolio, position), data: { confirm: 'Are you sure?' }, method: :delete %>
+    </div>
   </div>
 </div>
 <br>

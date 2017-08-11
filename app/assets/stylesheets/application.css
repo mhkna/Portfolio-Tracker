@@ -127,7 +127,14 @@ a {
 	text-decoration: underline;
 }
 
-.edit-delete-links {
-	font-size: 10px;
+.edit-delete-links-container {
+/*	font-size: 10px;*/
 	vertical-align: center;
+}
+.edit-links {
+
+}
+
+.delete-button {
+
 }
