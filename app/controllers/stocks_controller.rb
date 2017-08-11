@@ -28,6 +28,11 @@ class StocksController < ApplicationController
 
 	def edit
 		@stock = Stock.find_by(id: params[:id])
+		if request.xhr?
+			render :json => { page: render_to_string('stocks/edit', layout: false, locals: { stock: @stock }) }
+		else
+			render 'edit'
+		end
 	end
 
 	def update

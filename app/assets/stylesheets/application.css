@@ -95,3 +95,11 @@ a {
 .neutral-money {
  	color: black;
 }
+
+.portfolio-show-left {
+	float: left;
+}
+
+.portfolio-show-right {
+	float: right;
+}
