@@ -9,8 +9,24 @@ a {
 	color: silver;
 }
 
-.portfolio-name {
+.individual-portfolio {
+	font-size: 1.33em;
+	color: white;
+	position: relative;
+	margin: auto;
+	height: 100px;
+	width: 900px;
+	background-color: #444977;
+	border-radius: 15px;
+	box-sizing: border-box;
+}
 
+.delete-portfolio {
+	position: relative;
+	font-size: 0.88em;
+	position: absolute;
+	right: 25px;
+	bottom: 35px;
 }
 
 .navbar {
@@ -25,6 +41,11 @@ a {
 	padding-top: 20px;
 	padding-right: 25px;
 }
+.portfolio-text {
+	vertical-align: center;
+	text-indent: 30px;
+	padding-top: 35px;
+}
 
 .sign-in-form {
 	border: 1px solid-black;
@@ -32,6 +53,20 @@ a {
 
 .sign-up-form {
 	position: relative;
+}
+
+.portfolio-ul {
+	list-style: none;
+}
+
+#portfolio-link {
+	text-align: center;
+	font-size: 1.11em;
+}
+
+#portfolio-index-title {
+	text-align: center;
+	font-size: 1.5em;
 }
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files

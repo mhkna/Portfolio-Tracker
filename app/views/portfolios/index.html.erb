@@ -1,13 +1,15 @@
-<h1>Portfolio Index</h1>
+<div id="portfolio-index-title"><h1>Portfolio Index</h1></div>
 
-<%= link_to("New Portfolio", new_portfolio_path) %><br>
+<div id="portfolio-link"> <%= link_to("New Portfolio", new_portfolio_path) %><br> </div>
 
 <% if @portfolios %>
 	<% @portfolios.each do |portfolio| %>
-	<ul>
-		<li><%= link_to(portfolio.portfolio_name, portfolio_path(portfolio)) %>
+<!-- 	<ul class="portfolio-ul"> -->
+	<div class="individual-portfolio">
+		<p class="portfolio-text"><%= link_to(portfolio.portfolio_name, portfolio_path(portfolio)) %>
       <button class="delete-portfolio" id=<%= portfolio.id%>> Delete Portfolio</button>
-		</li>
-	</ul>
+		</p>
+	</div>
+<!-- 	</ul> -->
 	<% end %>
 <% end %>
