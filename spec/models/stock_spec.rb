@@ -4,15 +4,15 @@ describe Stock do
 	let(:stock) { Stock.new }
 
 	describe ".current_price" do
-		context "returns the current price of the stock" do
-			it 'will be a string if the symbol is valid' do
+		context "gives the current price of the stock" do
+			it 'returns a string if the symbol is valid' do
 				stock.symbol = "MSFT"
 				expect(stock.current_price).to be_a(String)
 			end
 
-			it 'raises an error when symbol is invalid' do
+			it 'returns false when symbol is invalid' do
 				stock.symbol = "1"
-				expect {stock.current_price}.to raise_error(ArgumentError, "Stock symbol is not valid")
+				expect {stock.current_price}.to be false
 			end
 		end
 	end

@@ -7,13 +7,18 @@ class PositionsController < ApplicationController
   def create
     @stock = Stock.new(name: params[:position][:name], symbol: params[:position][:symbol].upcase)
     @position = Position.new(position_params)
-    if !@stock.is_stock_already_persisted
-      @stock.save
-      @position.stock_id = @stock.id
+    if !@stock.current_price
+    	flash[:notice] = "Invalid stock symbol"
+    	render 'new'
     else
-      @wanted_stock = @stock.is_stock_already_persisted
-      @position.stock_id = @wanted_stock.id
-    end
+	    if !@stock.is_stock_already_persisted
+	      @stock.save
+	      @position.stock_id = @stock.id
+	    else
+	      @wanted_stock = @stock.is_stock_already_persisted
+	      @position.stock_id = @wanted_stock.id
+	    end
+	  end
     @position.portfolio_id = params[:portfolio_id]
     if @position.save
     	flash[:notice] = "Position added successfully"
