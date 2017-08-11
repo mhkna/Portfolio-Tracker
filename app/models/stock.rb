@@ -6,13 +6,12 @@ class Stock < ApplicationRecord
 	validates_uniqueness_of :name, :symbol
 
 	def current_price
-		# response = current_price_request
-		# if response.has_key?("Error Message")
-		# 	return false
-		# else
-		# 	response["Time Series (1min)"].first[1]["4. close"]
-		# end
-		200
+		response = current_price_request
+		if response.has_key?("Error Message")
+			return false
+		else
+			response["Time Series (1min)"].first[1]["4. close"]
+		end
 	end
 
 	def is_stock_already_persisted
