@@ -7,4 +7,8 @@ class Position < ApplicationRecord
   def profit_loss
     self.stock.current_price.to_d - self.purchase_price.to_d
   end
+
+  def percent_change
+    (self.stock.current_price.to_d - self.purchase_price) / self.purchase_price * 100
+  end
 end

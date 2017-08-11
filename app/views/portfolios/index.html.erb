@@ -4,12 +4,15 @@
 
 <% if @portfolios %>
 	<% @portfolios.each do |portfolio| %>
-<!-- 	<ul class="portfolio-ul"> -->
-	<div class="individual-portfolio">
-		<p class="portfolio-text"><%= link_to(portfolio.portfolio_name, portfolio_path(portfolio)) %>
-      <button class="delete-portfolio" id=<%= portfolio.id%>> Delete Portfolio</button>
-		</p>
-	</div>
-<!-- 	</ul> -->
+  	<div class="individual-portfolio">
+  		<p class="portfolio-text"><%= link_to(portfolio.portfolio_name, portfolio_path(portfolio)) %>
+
+        <span id="portfolio-numbers" class=<%=portfolio.css_green_or_red%>>
+        <%=number_to_currency(portfolio.total_pnl)%>
+        (<%=number_to_percentage(portfolio.percent_change, precision: 2)%>)</span>
+
+        <button class="delete-portfolio" id=<%= portfolio.id%>>Delete Portfolio</button>
+  		</p>
+  	</div>
 	<% end %>
 <% end %>

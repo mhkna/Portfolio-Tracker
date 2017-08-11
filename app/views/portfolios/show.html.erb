@@ -2,11 +2,28 @@
 <div>
   Total Profit/Loss
 </div>
-<h1 class=<%= @portfolio.css_green_or_red %>>
+<h1 class="notopmarg <%= @portfolio.css_green_or_red %>">
   <%= number_to_currency(@portfolio.total_pnl) %>
   (<%= number_to_percentage(@portfolio.percent_change, precision: 2) %>)
 </h1>
 
-<%= render partial: 'positions/position', collection: @positions %>
+<div class="colhead p-stock-name">
+  Name
+</div>
+<div class="colhead p-stock-symbol">
+  Symbol
+</div>
+<div class="colhead p-stock-purchase">
+  Purchase
+</div>
+<div class="colhead p-stock-current">
+  Current
+</div>
+<div class="colhead p-stock-profit-loss">
+  P/L
+</div>
+<br><br>
+
+<%= render partial: 'positions/position', collection: @portfolio.positions %>
 
 <%= link_to("Add New Position", new_portfolio_position_path(@portfolio)) %>
