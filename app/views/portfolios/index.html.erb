@@ -4,12 +4,10 @@
 
 <% if @portfolios %>
 	<% @portfolios.each do |portfolio| %>
-<!-- 	<ul class="portfolio-ul"> -->
 	<div class="individual-portfolio">
 		<p class="portfolio-text"><%= link_to(portfolio.portfolio_name, portfolio_path(portfolio)) %>
       <button class="delete-portfolio" id=<%= portfolio.id%>> Delete Portfolio</button>
 		</p>
 	</div>
-<!-- 	</ul> -->
 	<% end %>
 <% end %>

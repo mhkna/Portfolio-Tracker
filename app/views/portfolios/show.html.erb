@@ -2,11 +2,15 @@
 <div>
   Total Profit/Loss
 </div>
+
 <h1 class=<%= @portfolio.css_green_or_red %>>
   <%= number_to_currency(@portfolio.total_pnl) %>
   (<%= number_to_percentage(@portfolio.percent_change, precision: 2) %>)
 </h1>
 
+<div class="portfolio-show-left">
 <%= render partial: 'positions/position', collection: @positions %>
+</div>
+<div class="portfolio-show-right"></div>
 
 <%= link_to("Add New Position", new_portfolio_position_path(@portfolio)) %>
