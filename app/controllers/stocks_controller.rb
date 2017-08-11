@@ -33,6 +33,7 @@ class StocksController < ApplicationController
 	def update
 		@stock = Stock.find_by(id: params[:id])
 		@stock.update_attributes(stock_params)
+		@stock.symbol.upcase!
 		if !@stock.current_price
 			flash[:notice] = "Stock symbol is invalid"
 			render 'edit'
