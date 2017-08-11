@@ -8,9 +8,30 @@
   (<%= number_to_percentage(@portfolio.percent_change, precision: 2) %>)
 </h1>
 
+
 <div class="portfolio-show-left">
 <%= render partial: 'positions/position', collection: @positions %>
 </div>
 <div class="portfolio-show-right"></div>
+
+<div class="colhead p-stock-name">
+  Name
+</div>
+<div class="colhead p-stock-symbol">
+  Symbol
+</div>
+<div class="colhead p-stock-purchase">
+  Purchase
+</div>
+<div class="colhead p-stock-current">
+  Current
+</div>
+<div class="colhead p-stock-profit-loss">
+  P/L
+</div>
+<br><br>
+
+<%= render partial: 'positions/position', collection: @portfolio.positions %>
+
 
 <%= link_to("Add New Position", new_portfolio_position_path(@portfolio)) %>

@@ -96,10 +96,54 @@ a {
  	color: black;
 }
 
+
 .portfolio-show-left {
 	float: left;
 }
 
 .portfolio-show-right {
 	float: right;
+
+.p-stock-name {
+	float: left;
+ 	width: 150px;
+}
+
+.p-stock-symbol {
+	float: left;
+ 	width: 100px;
+}
+
+.p-stock-purchase {
+	float: left;
+ 	width: 100px;
+}
+
+.p-stock-current {
+	float: left;
+ 	width: 100px;
+}
+
+.p-stock-profit-loss {
+	float: left;
+ 	width: 175px;
+}
+
+.colhead {
+	font-style: italic;
+	font-size: 12px;
+	text-decoration: underline;
+}
+
+.edit-delete-links-container {
+/*	font-size: 10px;*/
+	vertical-align: center;
+}
+.edit-links {
+
+}
+
+.delete-button {
+
+
 }
