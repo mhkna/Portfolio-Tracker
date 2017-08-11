@@ -14,4 +14,6 @@
   <div class="p-stock-profit-loss">
     <%= number_to_currency(position.profit_loss.to_f) %>
   </div>
+  <%= link_to("Edit Stock", edit_stock_path(position.stock)) %>
+  <%= link_to("Edit Position", edit_portfolio_position_path(position)) %>
 </div>

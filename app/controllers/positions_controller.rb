@@ -34,7 +34,7 @@ class PositionsController < ApplicationController
   end
 
   def update
-    @position = Position.new(params[:id])
+    @position = Position.find(params[:id])
 
     if @position.update(position_params)
       redirect_to @position.portfolio

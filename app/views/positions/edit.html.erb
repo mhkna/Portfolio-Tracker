@@ -1,6 +1,6 @@
 <h1>Edit Position</h1>
 
-<%= form_with model: @position, url: edit_portfolio_position_path do |f| %>
+<%= form_with model: @position, url: portfolio_position_path do |f| %>
 
   <% if @position.errors.any? %>
     You have <%= pluralize(@position.errors.count, 'error') %>
