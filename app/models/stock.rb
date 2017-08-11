@@ -3,11 +3,12 @@ class Stock < ApplicationRecord
 	has_many :portfolios, through: :positions
 
 	validates_presence_of :name, :symbol
+	validates_uniqueness_of :name, :symbol
 
 	def current_price
 		response = current_price_request
 		if response.has_key?("Error Message")
-			raise ArgumentError, "Stock symbol is not valid"
+			return false
 		else
 			response["Time Series (1min)"].first[1]["4. close"]
 		end
