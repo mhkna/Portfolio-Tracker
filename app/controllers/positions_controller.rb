@@ -10,6 +10,7 @@ class PositionsController < ApplicationController
     if !@stock.current_price
     	flash[:notice] = "Invalid stock symbol"
     	render 'new'
+      return
     else
 	    if !@stock.is_stock_already_persisted
 	      @stock.save
@@ -22,7 +23,7 @@ class PositionsController < ApplicationController
     @position.portfolio_id = params[:portfolio_id]
     if @position.save
     	flash[:notice] = "Position added successfully"
-      redirect_to @position.portfolio and return
+      redirect_to @position.portfolio
     else
       render 'new'
     end
