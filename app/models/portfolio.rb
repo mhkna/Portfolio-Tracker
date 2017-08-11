@@ -24,4 +24,19 @@ class Portfolio < ApplicationRecord
   def total_pnl
     total_value - original_value
   end
+
+  def percent_change
+    (total_value - original_value) / original_value * 100
+  end
+
+  def css_green_or_red
+    if total_pnl > 0
+      "green-money"
+    elsif total_pnl < 0
+      "red-money"
+    else
+      "neutral-money"
+    end
+  end
+
 end

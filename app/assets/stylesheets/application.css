@@ -83,3 +83,15 @@ a {
  *= require_tree .
  *= require_self
  */
+
+.green-money {
+ 	color: green;
+}
+
+.red-money {
+ 	color: red;
+}
+
+.neutral-money {
+ 	color: black;
+}
