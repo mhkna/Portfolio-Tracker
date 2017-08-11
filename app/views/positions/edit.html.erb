@@ -1,6 +1,6 @@
 <h1>Edit Position</h1>
 
-<%= form_with model: @position, url: portfolio_position_path do |f| %>
+<%= form_with model: @position, url: portfolio_position_path, id: :update_position_form do |f| %>
 
   <% if @position.errors.any? %>
     You have <%= pluralize(@position.errors.count, 'error') %>
@@ -10,19 +10,19 @@
   <% end %>
 
   <p>
-    <%= f.label :owned_shares %><br>
-    <%= f.text_field :owned_shares %>
+    <%= f.label :owned_shares, id: :label_owned_shares %><br>
+    <%= f.text_field :owned_shares, id: :owned_shares %>
   </p>
   <p>
-    <%= f.label :purchase_price %><br>
-    <%= f.text_field :purchase_price %>
+    <%= f.label :purchase_price, id: :label_purchase_price %><br>
+    <%= f.text_field :purchase_price, id: :purchase_price %>
   </p>
   <p>
-    <%= f.label :sale_price %><br>
-    <%= f.text_field :sale_price %>
+    <%= f.label :sale_price, id: :label_sale_price %><br>
+    <%= f.text_field :sale_price, id: :sale_price %>
   </p>
   <p>
-    <%= f.submit "Update Position" %>
+    <%= f.submit "Update Position", id: :submit_position_update %>
   </p>
 
 <% end %>
