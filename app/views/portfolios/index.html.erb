@@ -2,17 +2,36 @@
 
 <div id="portfolio-link"> <%= link_to("New Portfolio", new_portfolio_path) %><br> </div>
 
+
 <% if @portfolios %>
-	<% @portfolios.each do |portfolio| %>
-  	<div class="individual-portfolio">
-  		<p class="portfolio-text"><%= link_to(portfolio.portfolio_name, portfolio_path(portfolio)) %>
+  <% @portfolios.each do |portfolio| %>
+    <div class="individual-portfolio">
+      <p class="portfolio-text"><%= link_to(portfolio.portfolio_name, portfolio_path(portfolio)) %>
 
         <span id="portfolio-numbers" class=<%=portfolio.css_green_or_red%>>
-        <%=number_to_currency(portfolio.total_pnl)%>
-        (<%=number_to_percentage(portfolio.percent_change, precision: 2)%>)</span>
+            <%= number_to_currency(portfolio.total_pnl) %>
+            <% if portfolio == nil || portfolio.total_pnl == 0 %>
+              (0.00%)
+            <% else %>
+              (<%= number_to_percentage(portfolio.percent_change, precision: 2) %>)
+            <% end %>
+        </span>
 
-        <button class="delete-portfolio" id=<%= portfolio.id%>>Delete Portfolio</button>
-  		</p>
-  	</div>
-	<% end %>
+        <%= button_to "Delete Portfolio", portfolio_path(portfolio),method: :delete, data: { confirm: "Are you sure?" }, class: "delete-portfolio" %>
+      </p>
+    </div>
+  <% end %>
 <% end %>
+
+<h2 id="total-total">
+  Total:
+  <% if @portfolios.any? %>
+    <% total = [] %>
+    <% @portfolios.each do |portfolio| %>
+      <% total << portfolio.total_pnl %>
+    <% end %>
+    <%= number_to_currency(total.inject(:+)) %>
+  <% else %>
+    $0.00
+  <% end %>
+</h2>

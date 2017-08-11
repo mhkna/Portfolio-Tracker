@@ -30,12 +30,10 @@ class Portfolio < ApplicationRecord
   end
 
   def css_green_or_red
-    if total_pnl > 0
+    if total_pnl >= 0
       "green-money"
     elsif total_pnl < 0
       "red-money"
-    else
-      "neutral-money"
     end
   end
 
