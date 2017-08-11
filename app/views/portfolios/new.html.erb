@@ -1,5 +1,6 @@
 <h1>Create New Portfolio</h1>
-
-<%= @portfolio.errors.full_messages %>
+<% if @errors %>
+	<%= @portfolio.errors.full_messages %>
+<% end %>
 
 <%= render "edit_new_form"  %>
