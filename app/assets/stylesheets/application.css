@@ -96,6 +96,14 @@ a {
  	color: black;
 }
 
+
+.portfolio-show-left {
+	float: left;
+}
+
+.portfolio-show-right {
+	float: right;
+
 .p-stock-name {
 	float: left;
  	width: 150px;
@@ -138,6 +146,7 @@ a {
 .delete-button {
 }
 
+
 #total-total {
 	padding-top: 10px;
 	position: relative;
@@ -145,5 +154,6 @@ a {
 	width: 900px;
 	border-radius: 15px;
 	box-sizing: border-box;
+
 }
 

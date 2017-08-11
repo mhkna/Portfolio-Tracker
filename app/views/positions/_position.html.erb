@@ -16,12 +16,13 @@
   </div>
   <div class="edit-delete-links-container">
     <div class="edit-links">
-      <%= link_to("Edit Stock", edit_stock_path(position.stock)) %> |
-      <%= link_to("Edit Position", edit_portfolio_position_path(@portfolio, position)) %> |
+      <%= link_to("Edit Stock", edit_stock_path(position.stock), class: :link_edit_stock) %> |
+      <%= link_to("Edit Position", edit_portfolio_position_path(@portfolio, position), class: :link_edit_position) %> |
     </div>
     <div class="delete-button">
       <%= button_to "Delete", portfolio_position_path(@portfolio, position), method: :delete %>
     </div>
   </div>
+
 </div>
 <br>
