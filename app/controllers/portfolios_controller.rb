@@ -11,6 +11,7 @@ class PortfoliosController < ApplicationController
     @portfolio = Portfolio.new(portfolio_params)
     current_user.portfolios << @portfolio
     if @portfolio.save
+    	flash[:notice] = "Portfolio added successfully"
       redirect_to @portfolio #do we want a notice?
     else
       render :new, status: 422

@@ -16,6 +16,7 @@ class PositionsController < ApplicationController
     end
     @position.portfolio_id = params[:portfolio_id]
     if @position.save
+    	flash[:notice] = "Position added successfully"
       redirect_to @position.portfolio
     else
       render 'new'

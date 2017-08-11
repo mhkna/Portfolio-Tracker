@@ -10,6 +10,7 @@ class StocksController < ApplicationController
 			status 406
 			render 'new'
 		else
+			if 
 			if @stock.save
 				flash[:notice] = "Stock added successfully"
 				redirect_to portfolios_path

@@ -7,7 +7,7 @@ class Stock < ApplicationRecord
 	def current_price
 		response = current_price_request
 		if response.has_key?("Error Message")
-			raise ArgumentError, "Stock symbol is not valid"
+			return false
 		else
 			response["Time Series (1min)"].first[1]["4. close"]
 		end
